@@ -47,10 +47,19 @@ def build_system(data):
 {ctx.get('description', 'N/A')}
 
 ## SELECTED RCA METHODOLOGY
-The user has selected: **{data.get('rca_method', 'N/A')}**. Apply ONLY this methodology during the investigation.
+The user has selected: **{data.get('rca_method', 'N/A')}**. Apply ALL selected methodologies during the investigation.
 
 ## SUPPORTING DOCUMENTS PROVIDED
 {docs}
+
+---
+
+## INTERACTION RULES
+- Ask ONLY ONE question at a time. Never bundle multiple questions in a single response.
+- Wait for the user's answer before proceeding to the next question or follow-up.
+- If a previous answer is incomplete or unclear, ask a single clarifying question about it before moving on.
+- Do NOT use emojis anywhere in your responses.
+- Keep your language formal and concise.
 """
 
 
