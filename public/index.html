@@ -122,7 +122,7 @@
     .step-sep { color: var(--border-mid); margin: 0 2px; font-size: 14px; }
 
     /* ── MAIN ── */
-    .main { max-width: 1200px; margin: 0 auto; padding: 12px 20px; }
+    .main { max-width: 1200px; margin: 0 auto; padding: 8px 16px; }
 
     /* ── PANELS ── */
     .panel { display: none; }
@@ -136,12 +136,12 @@
       border: 1px solid var(--border);
     }
     .card-header {
-      padding: 10px 16px 8px;
+      padding: 8px 14px 7px;
       border-bottom: 1px solid var(--border);
     }
     .card-title { font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
-    .card-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
-    .card-body { padding: 14px; }
+    .card-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 1px; }
+    .card-body { padding: 10px 14px; }
 
     /* ── FORM ── */
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -346,12 +346,12 @@
     .btn-secondary svg { width: 13px; height: 13px; }
 
     /* ── CHAT PANEL ── */
-    .chat-layout { display: grid; grid-template-columns: 268px 1fr; gap: 12px; align-items: start; }
+    .chat-layout { display: grid; grid-template-columns: 248px 1fr; gap: 8px; align-items: start; }
     @media (max-width: 800px) { .chat-layout { grid-template-columns: 1fr; } }
 
     .chat-sidebar { position: sticky; top: 76px; }
     .sidebar-card { margin-bottom: 6px; }
-    .incident-summary { padding: 8px 10px; }
+    .incident-summary { padding: 6px 10px; }
     .summary-incident-title {
       font-size: 13px;
       font-weight: 700;
@@ -361,7 +361,7 @@
       padding-bottom: 6px;
       border-bottom: 1px solid var(--border);
     }
-    .summary-row { display: flex; gap: 8px; margin-bottom: 4px; align-items: flex-start; }
+    .summary-row { display: flex; gap: 8px; margin-bottom: 2px; align-items: flex-start; }
     .summary-label { font-size: 10px; font-weight: 700; color: var(--text-faint); text-transform: uppercase; letter-spacing: .04em; min-width: 72px; flex-shrink: 0; padding-top: 1px; }
     .summary-val { font-size: 12px; color: var(--text); line-height: 1.4; }
     .rca-method-badge {
@@ -882,16 +882,16 @@
         <div class="form-grid">
 
           <!-- Left column -->
-          <div>
-            <div class="form-group" style="margin-bottom:10px">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div class="form-group">
               <label>Incident Title <span class="req">*</span></label>
               <input type="text" id="f-title" placeholder="e.g., CrowdStrike EDR Sensor Outage — All Endpoints" />
             </div>
-            <div class="form-group" style="margin-bottom:10px">
+            <div class="form-group">
               <label>Date &amp; Time of Incident</label>
               <input type="datetime-local" id="f-datetime" />
             </div>
-            <div class="form-group" style="margin-bottom:10px">
+            <div class="form-group">
               <label>Detection Method <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;color:var(--text-faint)">(select all that apply)</span></label>
               <div class="detection-options">
                 <label class="det-opt"><input type="checkbox" value="Automated Alert"><span class="det-opt-label">Automated Alert</span></label>
@@ -977,16 +977,16 @@
           </div>
 
           <!-- Right column -->
-          <div>
-            <div class="form-group" style="margin-bottom:10px">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div class="form-group">
               <label>Systems Affected</label>
               <input type="text" id="f-systems" placeholder="e.g., SAP ERP, Active Directory, CrowdStrike EDR" />
             </div>
-            <div class="form-group" style="margin-bottom:10px">
+            <div class="form-group">
               <label>Departments Affected</label>
               <input type="text" id="f-departments" placeholder="e.g., IT, Finance, Operations" />
             </div>
-            <div class="form-group" style="margin-bottom:10px">
+            <div class="form-group">
               <label>Impact Level</label>
               <div class="impact-toggle">
                 <button class="impact-btn" data-val="Low" onclick="selectImpact(this)">Low</button>
@@ -1003,7 +1003,7 @@
 
           <!-- Full-width: documents -->
           <div class="full">
-            <label style="margin-bottom:10px;display:block">
+            <label style="margin-bottom:5px;display:block">
               Supporting Documents
               <span style="font-weight:400;color:var(--text-faint);text-transform:none;letter-spacing:0;font-size:12px;margin-left:4px">(optional)</span>
             </label>
@@ -1029,7 +1029,7 @@
 
         </div>
 
-        <div style="margin-top:14px;display:flex;justify-content:flex-end">
+        <div style="margin-top:8px;display:flex;justify-content:flex-end">
           <button class="btn-primary" id="btnBegin" onclick="beginInvestigation()" disabled>
             Begin Investigation
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
