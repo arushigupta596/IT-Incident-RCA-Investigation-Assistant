@@ -1,5 +1,5 @@
 {
-  "name": "biocon-it-rca-assistant",
+  "outputDirectory": "public",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" }
   ]
