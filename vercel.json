@@ -1,0 +1,6 @@
+{
+  "name": "biocon-it-rca-assistant",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" }
+  ]
+}
