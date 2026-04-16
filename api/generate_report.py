@@ -100,7 +100,7 @@ class handler(BaseHTTPRequestHandler):
             stream = client.chat.completions.create(
                 model=model,
                 messages=openai_messages,
-                max_tokens=16000,
+                max_tokens=8000,
                 stream=True,
                 extra_headers={
                     "HTTP-Referer": "https://biocon-rca-assistant.vercel.app",

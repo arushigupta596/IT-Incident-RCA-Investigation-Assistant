@@ -238,7 +238,7 @@ class DevHandler(SimpleHTTPRequestHandler):
             messages = list(body.get("messages", []))
             if self.path == "/api/generate_report":
                 messages.append({"role": "user", "content": REPORT_INSTRUCTION})
-                max_tokens = 16000
+                max_tokens = 8000
             elif self.path == "/api/qa_review":
                 report_md = body.get("report_markdown", "").strip() or "No report provided."
                 docs = body.get("documents", "").strip() or "No supporting documents provided."

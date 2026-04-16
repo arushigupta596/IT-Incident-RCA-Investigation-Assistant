@@ -1541,6 +1541,7 @@
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let buffer = '', fullText = '';
+      let reportShown = false;
 
       while (true) {
         const { done, value } = await reader.read();
@@ -1556,16 +1557,22 @@
           try {
             const parsed = JSON.parse(data);
             if (parsed.error) throw new Error(parsed.error);
-            if (parsed.text) fullText += parsed.text;
+            if (parsed.text) {
+              fullText += parsed.text;
+              // Show report doc on first chunk
+              if (!reportShown) {
+                document.getElementById('reportLoading').style.display = 'none';
+                document.getElementById('reportDoc').style.display = 'block';
+                reportShown = true;
+              }
+              document.getElementById('reportContent').innerHTML = marked.parse(fullText);
+            }
           } catch {}
         }
       }
 
       rawReportMarkdown = fullText;
-      document.getElementById('reportContent').innerHTML = marked.parse(fullText);
       styleCapaTable();
-      document.getElementById('reportLoading').style.display = 'none';
-      document.getElementById('reportDoc').style.display = 'block';
 
     } catch (err) {
       document.getElementById('reportLoading').style.display = 'none';
