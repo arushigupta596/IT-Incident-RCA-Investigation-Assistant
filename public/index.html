@@ -997,32 +997,30 @@
             </div>
             <div class="form-group">
               <label>Incident Description <span class="req">*</span></label>
-              <textarea id="f-description" rows="6" placeholder="Describe what happened, symptoms observed, and initial impact..."></textarea>
+              <textarea id="f-description" rows="4" placeholder="Describe what happened, symptoms observed, and initial impact..."></textarea>
             </div>
-          </div>
-
-          <!-- Full-width: documents -->
-          <div class="full">
-            <label style="margin-bottom:5px;display:block">
-              Supporting Documents
-              <span style="font-weight:400;color:var(--text-faint);text-transform:none;letter-spacing:0;font-size:12px;margin-left:4px">(optional)</span>
-            </label>
-            <div class="doc-tabs">
-              <div class="doc-tab active" onclick="switchDocTab('paste')">Paste Text</div>
-              <div class="doc-tab" onclick="switchDocTab('upload')">Upload File</div>
-            </div>
-            <div class="doc-panel active" id="doc-paste">
-              <textarea id="f-docs-text" rows="4" placeholder="Paste IT emails, vendor case details, service provider responses, or any other supporting content here..."></textarea>
-            </div>
-            <div class="doc-panel" id="doc-upload">
-              <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
-                <input type="file" id="fileInput" accept=".txt,.eml,.csv,.log,.md,.pdf,.docx" multiple onchange="handleFileUpload(event)" />
-                <div class="upload-svg-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <div class="form-group">
+              <label>
+                Supporting Documents
+                <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;color:var(--text-faint);margin-left:4px">(optional)</span>
+              </label>
+              <div class="doc-tabs">
+                <div class="doc-tab active" onclick="switchDocTab('paste')">Paste Text</div>
+                <div class="doc-tab" onclick="switchDocTab('upload')">Upload File</div>
+              </div>
+              <div class="doc-panel active" id="doc-paste">
+                <textarea id="f-docs-text" rows="3" placeholder="Paste IT emails, vendor case details, service provider responses..."></textarea>
+              </div>
+              <div class="doc-panel" id="doc-upload">
+                <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+                  <input type="file" id="fileInput" accept=".txt,.eml,.csv,.log,.md,.pdf,.docx" multiple onchange="handleFileUpload(event)" />
+                  <div class="upload-svg-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  </div>
+                  <div class="upload-label">Click to upload a document</div>
+                  <div class="upload-hint">.pdf, .docx, .txt, .eml, .log, .csv — multiple files supported</div>
+                  <div class="upload-filename" id="uploadFilename"></div>
                 </div>
-                <div class="upload-label">Click to upload a document</div>
-                <div class="upload-hint">.pdf, .docx, .txt, .eml, .log, .csv — multiple files supported</div>
-                <div class="upload-filename" id="uploadFilename"></div>
               </div>
             </div>
           </div>
