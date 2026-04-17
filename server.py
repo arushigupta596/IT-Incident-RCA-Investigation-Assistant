@@ -24,58 +24,90 @@ from openai import OpenAI
 SYSTEM_PROMPT = (ROOT / "claude.md").read_text()
 REPORT_INSTRUCTION = """Now generate the complete audit-ready Investigation Report based on the full investigation conducted above.
 
-Use the following exact structure with markdown headers:
+Use the following exact structure with markdown headers. Write EVERYTHING as paragraphs and bullet lists — do NOT use any markdown tables anywhere in the report.
 
 ## 1. Basic Information
-Table with fields: IR Number, Classification, Incident Date, Incident Time, Report Date, Report Version, Department(s) Affected, Systems Affected, Root Cause Category, Status.
+Write each field as a labelled line, e.g.:
+**IR Number:** ...
+**Classification:** ...
+**Incident Date & Time:** ...
+**Report Date:** ...
+**Report Version:** ...
+**Departments Affected:** ...
+**Systems Affected:** ...
+**Root Cause Category:** ...
+**Status:** ...
 
 ## 2. Source of Non-Conformity
-Source (Internal/External), Category, Detected By, Reported To.
+Write as labelled lines:
+**Source:** Internal / External
+**Category:** ...
+**Detected By:** ...
+**Reported To:** ...
 
 ## 3. Description
 ### 3.1 Problem Statement
+A paragraph describing the problem clearly.
+
 ### 3.2 Desired State
-### 3.3 Sequence of Events (Timeline table: Date | Time | Event)
+A paragraph describing the expected/normal state.
+
+### 3.3 Sequence of Events
+Write as a numbered or bulleted chronological list. Each entry: date, time, and event description. Do not use a table.
+
 ### 3.4 Reference Documents
+Bulleted list of referenced documents.
 
 ## 4. Pre-Evaluation
 ### 4.1 Initial Impact Assessment
+Paragraph describing impact scope and severity.
+
 ### 4.2 Immediate Actions / Correction
+Bulleted list of actions taken immediately.
+
 ### 4.3 Historical Check
+Paragraph on whether similar incidents have occurred before.
 
 ## 5. Investigation
 ### 5.1 Root Cause Analysis
-Apply the selected RCA methodology in full depth.
+Apply the selected RCA methodology in full depth. Write as structured paragraphs and bullet points — no tables.
+
 ### 5.2 Data and Documents Reviewed
+Bulleted list of documents, logs, emails, and vendor inputs reviewed.
+
 ### 5.3 Root Cause Summary
-Primary Root Cause + Contributing Factors
+**Primary Root Cause:** One clear paragraph.
+**Contributing Factors:** Bulleted list.
 
 ## 6. Impact Assessment
-Table with columns: Impact Area | Assessment | Justification
-Rows: Product Quality, Analytical Data, QMS/Regulatory, Validated Systems, Business Operations.
+Write each impact area as a bold heading followed by a paragraph:
+**Product Quality:** ...
+**Analytical Data:** ...
+**QMS / Regulatory Compliance:** ...
+**Validated Systems:** ...
+**Business Operations:** ...
 
 ## 7. Corrective and Preventive Actions (CAPA)
-First: a brief paragraph explaining why corrective actions are necessary.
-Then a Corrective Actions table with columns: Ref# | Type | Action Description | Owner | Due Date | Status
-(Use CA-01, CA-02... for Ref#)
+### 7.1 Corrective Actions
+A paragraph explaining why corrective actions are needed, followed by a numbered list of actions. Each action should include: description, owner, due date, and status.
 
-Then: a brief paragraph explaining why preventive actions are being implemented.
-Then a Preventive Actions table with columns: Ref# | Type | Action Description | Owner | Due Date | Status
-(Use PA-01, PA-02... for Ref#)
+### 7.2 Preventive Actions
+A paragraph explaining why preventive actions are being implemented, followed by a numbered list. Each action should include: description, owner, due date, and status.
 
 ## 8. Conclusion
-What happened, why, how it was resolved, recurrence risk.
+Paragraphs covering: what happened, why it happened, how it was resolved, and recurrence risk assessment.
 
 ## 9. Attachments
-List all referenced documents.
+Numbered list of all referenced documents.
 
 ## 10. Abbreviations
-Table: Abbreviation | Expansion
+Bulleted list in the format: **ABBR** — Full expansion
 
-## 11. Investigation Team Signatures
-Table: Role | Department | Signature | Date
+## 11. Investigation Team
+Write as labelled lines for each team member:
+**Role:** ... | **Department:** ... | **Date:** ...
 
-Use markdown tables throughout. Be formal, structured, and audit-ready. Do NOT add conversational commentary outside the report sections. Do NOT use emojis."""
+Be formal, structured, and audit-ready. Do NOT use any markdown tables. Do NOT use emojis. Do NOT add conversational commentary outside the report sections."""
 
 QA_REVIEW_PROMPT = """You are a senior IT Quality Assurance Reviewer at a pharmaceutical company operating under 21 CFR Part 11, EU GMP Annex 11, and ISO 27001 frameworks.
 

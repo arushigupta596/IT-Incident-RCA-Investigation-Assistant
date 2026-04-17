@@ -12,20 +12,90 @@ OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
 REPORT_INSTRUCTION = """Now generate the complete audit-ready Investigation Report based on the full investigation conducted above.
 
-Use the exact 10-section structure defined in your instructions:
-1. Basic Information
-2. Source of Non-Conformity
-3. Description (include a Timeline table)
-4. Pre-Evaluation
-5. Investigation (5.1 RCA, 5.2 Data Reviewed, 5.3 Root Cause)
-6. Impact Assessment
-7. CAPA (as a table with Action ID, Type, Description, Owner, Due Date, Status)
-8. Conclusion
-9. Attachments
-10. Abbreviations
+Use the following exact structure with markdown headers. Write EVERYTHING as paragraphs and bullet lists — do NOT use any markdown tables anywhere in the report.
 
-Use markdown formatting with clear section headers (##, ###). Use tables where applicable.
-Be formal, structured, and audit-ready. Do NOT add conversational commentary outside the report sections."""
+## 1. Basic Information
+Write each field as a labelled line, e.g.:
+**IR Number:** ...
+**Classification:** ...
+**Incident Date & Time:** ...
+**Report Date:** ...
+**Report Version:** ...
+**Departments Affected:** ...
+**Systems Affected:** ...
+**Root Cause Category:** ...
+**Status:** ...
+
+## 2. Source of Non-Conformity
+Write as labelled lines:
+**Source:** Internal / External
+**Category:** ...
+**Detected By:** ...
+**Reported To:** ...
+
+## 3. Description
+### 3.1 Problem Statement
+A paragraph describing the problem clearly.
+
+### 3.2 Desired State
+A paragraph describing the expected/normal state.
+
+### 3.3 Sequence of Events
+Write as a numbered or bulleted chronological list. Each entry: date, time, and event description. Do not use a table.
+
+### 3.4 Reference Documents
+Bulleted list of referenced documents.
+
+## 4. Pre-Evaluation
+### 4.1 Initial Impact Assessment
+Paragraph describing impact scope and severity.
+
+### 4.2 Immediate Actions / Correction
+Bulleted list of actions taken immediately.
+
+### 4.3 Historical Check
+Paragraph on whether similar incidents have occurred before.
+
+## 5. Investigation
+### 5.1 Root Cause Analysis
+Apply the selected RCA methodology in full depth. Write as structured paragraphs and bullet points — no tables.
+
+### 5.2 Data and Documents Reviewed
+Bulleted list of documents, logs, emails, and vendor inputs reviewed.
+
+### 5.3 Root Cause Summary
+**Primary Root Cause:** One clear paragraph.
+**Contributing Factors:** Bulleted list.
+
+## 6. Impact Assessment
+Write each impact area as a bold heading followed by a paragraph:
+**Product Quality:** ...
+**Analytical Data:** ...
+**QMS / Regulatory Compliance:** ...
+**Validated Systems:** ...
+**Business Operations:** ...
+
+## 7. Corrective and Preventive Actions (CAPA)
+### 7.1 Corrective Actions
+A paragraph explaining why corrective actions are needed, followed by a numbered list of actions. Each action should include: description, owner, due date, and status.
+
+### 7.2 Preventive Actions
+A paragraph explaining why preventive actions are being implemented, followed by a numbered list. Each action should include: description, owner, due date, and status.
+
+## 8. Conclusion
+Paragraphs covering: what happened, why it happened, how it was resolved, and recurrence risk assessment.
+
+## 9. Attachments
+Numbered list of all referenced documents.
+
+## 10. Abbreviations
+Bulleted list in the format: **ABBR** — Full expansion
+
+## 11. Investigation Team
+Write as labelled lines for each team member:
+**Role:** ... | **Department:** ... | **Date:** ...
+
+Be formal, structured, and audit-ready. Do NOT use any markdown tables. Do NOT use emojis. Do NOT add conversational commentary outside the report sections."""
 
 
 def build_system(data):
